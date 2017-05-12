@@ -2,7 +2,7 @@ import easygui
 import sys
 
 def select_choice(name):
-    msg = "Reading book \"" + name + "\". Choose any number of output formats : "
+    msg = "Reading book \"" + name + "\". Choose the output formats"
     title = "Output Formats"
     choices = ["Text", "Translation", "Audio"]
     choice = easygui.multchoicebox(msg, title, choices)
@@ -20,7 +20,7 @@ def job_done():
     easygui.textbox(text = "Process(es) completed.")
 
 def main():
-    book_name = easygui.enterbox("Enter Book Name : ", "Book Name")
+    book_name = easygui.enterbox("Enter Book Name", "Book Name")
     given_choices, selected_choices = select_choice(book_name)
     if selected_choices:
         job_in_progress(selected_choices)
