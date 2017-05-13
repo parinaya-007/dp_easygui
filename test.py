@@ -19,6 +19,22 @@ def job_in_progress(selected_choices):
 def job_done():
     easygui.textbox(text = "Process(es) completed.")
 
+def pdfy():
+    #Insert code to convert images to PDF here.
+    print("something related to PDFs")
+
+def textify():
+    #Insert code to convert images to text here.
+    print("something related to text")
+
+def translate():
+    #Insert code to translate text here.
+    print("something related to translate")
+
+def audiofy():
+    #Insert code to convert text to mp3 here.
+    print("something related to audio")
+
 def main():
     book_name = easygui.enterbox("Enter Book Name", "Book Name")
     if book_name == "":
