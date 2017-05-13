@@ -21,6 +21,9 @@ def job_done():
 
 def main():
     book_name = easygui.enterbox("Enter Book Name", "Book Name")
+    if book_name == "":
+        easygui.msgbox("No book name given.", "error")
+        exit()
     given_choices, selected_choices = select_choice(book_name)
     if selected_choices:
         job_in_progress(selected_choices)
