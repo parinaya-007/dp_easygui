@@ -54,16 +54,16 @@ def main():
 
     given_choices, selected_choices = select_choice(book_name)
     if "Translation" in selected_choices:
-      translate()
+        translate()
 
     if "Audio Generation" in selected_choices:
-      audiofy()
+        audiofy()
 
     if "Text Generation" in selected_choices:
-      textify()
-      
+        textify()
+
     if "PDF" in selected_choices:
-      pdfy()
+        pdfy()
 
     # if selected_choices:
     #     for choice in selected_choices:
