@@ -4,7 +4,7 @@ import sys
 def select_choice(name):
     msg = "Reading book \"" + name + "\". Choose the output formats"
     title = "Output Formats"
-    choices = ["Text Generation", "Translation", "Audio Genetation", "PDF"]
+    choices = ["Text Generation", "Translation", "Audio Generation", "PDF Generation"]
     choice = easygui.multchoicebox(msg, title, choices)
     return choices, choice
 
