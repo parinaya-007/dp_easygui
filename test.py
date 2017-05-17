@@ -23,13 +23,27 @@ def textify():
     #Insert code to convert images to text here.
     print("something related to text")
 
+def translate_regions(choice):
+    title = "Select Language for translation"
+    if choice == "Indian Languages":
+        msg = "Choose any following Indian Language for translation : "
+        choices = ["Bengali", "English", "Gujarati", "Hindi", "Kannada", "Malayalam", "Marathi", "Punjabi", "Sindhi", "Tamil", "Telugu"]
+        lang_choice = easygui.choicebox(msg, title, choices)
+        return lang_choice
+    else:
+        msg = "Choose any following Indian Language for translation : "
+        choices = ["German", "French", "Italian"]
+        lang_choice = easygui.choicebox(msg, title, choices)
+        return lang_choice
+
 def translate():
     #Insert code to translate text here.
-    msg = "Choose any following Indian Language for translation : "
     title = "Select Language for translation"
-    choices = ["Bengali", "English", "Gujarati", "Hindi", "Kannada", "Malayalam", "Marathi", "Punjabi", "Sindhi", "Tamil", "Telugu"]
+    msg = "Choose any region for the language selection."
+    choices = ["Foreign Languages", "Indian Languages"]
     choice = easygui.choicebox(msg, title, choices)
-    easygui.msgbox("Translating to " + choice + " language...")
+    lang = translate_regions(choice)
+    easygui.msgbox("Translating to " + lang + " language...")
     easygui.textbox("Translating done.")
     return
     # print("something related to translate")
