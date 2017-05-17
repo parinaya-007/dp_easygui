@@ -25,11 +25,25 @@ def textify():
 
 def translate():
     #Insert code to translate text here.
-    print("something related to translate")
+    msg = "Choose any following Indian Language for translation : "
+    title = "Select Language for translation"
+    choices = ["Bengali", "English", "Gujarati", "Hindi", "Kannada", "Malayalam", "Marathi", "Punjabi", "Sindhi", "Tamil", "Telugu"]
+    choice = easygui.choicebox(msg, title, choices)
+    easygui.msgbox("Translating to " + choice + "language..........")
+    easygui.textbox("Translating done.")
+    return
+    # print("something related to translate")
 
 def audiofy():
     #Insert code to convert text to mp3 here.
-    print("something related to audio")
+    msg = "Choose any following language for an audio format : "
+    title = "Select Language for audio"
+    choices = ["English(default)", "Great Britain", "German", "Spanish", "French", "Italian"]
+    choice = easygui.choicebox(msg, title, choices)
+    easygui.msgbox("Generating audio file in " + choice + "language............")
+    easygui.textbox("Audio file generated.")
+    # print("something related to audio")
+    return
 
 def main():
     book_name = easygui.enterbox("Enter Book Name", "Book Name")
@@ -39,12 +53,24 @@ def main():
         exit()
 
     given_choices, selected_choices = select_choice(book_name)
-    if selected_choices:
-        for choice in selected_choices:
-            job_in_progress(choice)
-            #Insert job function call here.
-            job_done(choice)
-    else:
-        exit()
+    if "Translation" in selected_choices:
+      translate()
+
+    if "Audio Generation" in selected_choices:
+      audiofy()
+
+    if "Text Generation" in selected_choices:
+      textify()
+      
+    if "PDF" in selected_choices:
+      pdfy()
+
+    # if selected_choices:
+    #     for choice in selected_choices:
+    #         job_in_progress(choice)
+    #         #Insert job function call here.
+    #         job_done(choice)
+    # else:
+    #     exit()
 
 main()
