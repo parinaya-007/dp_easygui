@@ -23,14 +23,28 @@ def textify():
     #Insert code to convert images to text here.
     print("something related to text")
 
+def translate_regions(choice):
+    title = "Select Language for translation"
+    if choice == "Indian Languages":
+        msg = "Choose any following Indian Language for translation : "
+        choices = ["Bengali", "English", "Gujarati", "Hindi", "Kannada", "Malayalam", "Marathi", "Punjabi", "Sindhi", "Tamil", "Telugu"]
+        lang_choice = easygui.choicebox(msg, title, choices)
+        return lang_choice
+    else:
+        msg = "Choose any following Indian Language for translation : "
+        choices = ["German", "French", "Italian"]
+        lang_choice = easygui.choicebox(msg, title, choices)
+        return lang_choice
+
 def translate():
     #Insert code to translate text here.
-    msg = "Choose any following Indian Language for translation : "
     title = "Select Language for translation"
-    choices = ["Bengali", "English", "Gujarati", "Hindi", "Kannada", "Malayalam", "Marathi", "Punjabi", "Sindhi", "Tamil", "Telugu"]
+    msg = "Choose any region for the language selection."
+    choices = ["Foreign Languages", "Indian Languages"]
     choice = easygui.choicebox(msg, title, choices)
-    easygui.msgbox("Translating to " + choice + " language...")
-    easygui.textbox("Translating done.")
+    lang = translate_regions(choice)
+    easygui.msgbox("Translating to " + lang + " language...")
+    easygui.msgbox("Translation completed.", "Done")
     return
     # print("something related to translate")
 
@@ -41,18 +55,30 @@ def audiofy():
     choices = ["English - GB (default)", "English - US", "German", "Spanish", "French", "Italian"]
     choice = easygui.choicebox(msg, title, choices)
     easygui.msgbox("Generating audio file in " + choice + " language...")
-    easygui.textbox("Audio file generated.")
+    easygui.msgbox("Audio file generated.", "Done")
     # print("something related to audio")
     return
 
 def main():
+
     book_name = easygui.enterbox("Enter Book Name", "Book Name")
-
     if book_name == "":
-        easygui.msgbox("No book name given.", "error")
+        easygui.msgbox("No book name given.", "Error")
         exit()
-
     given_choices, selected_choices = select_choice(book_name)
+
+    book_pages=-1
+    while True:
+        book_pages = easygui.enterbox("Enter the number of pages", "Pages")
+        try:
+            book_pages = int(book_pages)
+        except ValueError:
+            easygui.msgbox("Number of pages must be an integer.", "Error")
+            continue
+        else:
+            break
+
+
     if "Translation" in selected_choices:
         translate()
 
