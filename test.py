@@ -44,7 +44,7 @@ def translate():
     choice = easygui.choicebox(msg, title, choices)
     lang = translate_regions(choice)
     easygui.msgbox("Translating to " + lang + " language...")
-    easygui.textbox("Translating done.")
+    easygui.msgbox("Translation completed.", "Done")
     return
     # print("something related to translate")
 
@@ -55,18 +55,30 @@ def audiofy():
     choices = ["English - GB (default)", "English - US", "German", "Spanish", "French", "Italian"]
     choice = easygui.choicebox(msg, title, choices)
     easygui.msgbox("Generating audio file in " + choice + " language...")
-    easygui.textbox("Audio file generated.")
+    easygui.msgbox("Audio file generated.", "Done")
     # print("something related to audio")
     return
 
 def main():
+
     book_name = easygui.enterbox("Enter Book Name", "Book Name")
-
     if book_name == "":
-        easygui.msgbox("No book name given.", "error")
+        easygui.msgbox("No book name given.", "Error")
         exit()
-
     given_choices, selected_choices = select_choice(book_name)
+
+    book_pages=-1
+    while True:
+        book_pages = easygui.enterbox("Enter the number of pages", "Pages")
+        try:
+            book_pages = int(book_pages)
+        except ValueError:
+            easygui.msgbox("Number of pages must be an integer.", "Error")
+            continue
+        else:
+            break
+
+
     if "Translation" in selected_choices:
         translate()
 
